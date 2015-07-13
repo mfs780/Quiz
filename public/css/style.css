@@ -1,0 +1,114 @@
+body {
+    background-color: #F5F5F5;
+}
+
+#navDropdown a {
+    background-color: #2F71AC;
+}
+
+#navDropdown ul {
+    background-color: #2F71AC;
+}
+
+.hackyhack {
+  position: relative;
+}
+.hackyhack .dropdown-menu {
+   left: auto !important;
+   right: 0px;
+ }
+#topNav {
+    padding-right: 15px;
+    margin: 0px;
+    background-color: #2F71AC;
+    /*background: rgba(86, 78, 230, 1);
+    background: -moz-linear-gradient(top, rgba(86, 78, 230, 1) 0%, rgba(73, 112, 189, 1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(86, 78, 230, 1)), color-stop(100%, rgba(73, 112, 189, 1)));
+    background: -webkit-linear-gradient(top, rgba(86, 78, 230, 1) 0%, rgba(73, 112, 189, 1) 100%);
+    background: -o-linear-gradient(top, rgba(86, 78, 230, 1) 0%, rgba(73, 112, 189, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(86, 78, 230, 1) 0%, rgba(73, 112, 189, 1) 100%);
+    background: linear-gradient(to bottom, rgba(86, 78, 230, 1) 0%, rgba(73, 112, 189, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#564ee6', endColorstr='#4970bd', GradientType=0);*/
+}
+#topNav a {
+    color: white;
+}
+#quizCreationTitle {
+    background-color: #F8F8F8;
+    border: 1px solid #B5B5B5;
+    padding: 13px;
+}
+#quizCreationQuestionList {
+    padding: 10px;
+}
+#quizCreationQuestionList ul {
+    list-style: none;
+    padding: 0px;
+}
+#quizCreationQuestionList li {
+    background-color: none;
+    color: black;
+    padding: 3px;
+}
+#quizCreationQuestionList li.active {
+    background-color: #2F71AC;
+    color: white;
+}
+#quizCreationQuestionList li.active .square {
+    background-color: gray;
+}
+#quizCreationQuestionList .square {
+    float: left;
+    background-color: #2F71AC;
+    padding: 6px;
+    margin-top: 3px;
+    margin-right: 5px;
+    border: 1px solid white;
+}
+#quizCreationQuestionContainer {
+    background-color: white;
+    padding: 0px;
+    border-left: 1px solid #B5B5B5;
+}
+#quizCreationQuestionHeader {
+    background-color: #EEEEEE;
+    padding: 10px;
+}
+#quizCreationQuestionBuilder {
+    padding: 10px;
+}
+.question {
+    height: 79px;
+}
+.question .letter {
+    height: 75px;
+    border: 1px solid #B5B5B5;
+    background-color: #F5F5F5;
+    font-weight: 900;
+    line-height: 30px;
+    text-align: center;
+}
+.question .answer {
+    padding: 0px;
+}
+.question .text {
+    resize: none;
+    height: 75px;
+    border-radius: 0px;
+    padding: 0px;
+}
+.correctoption {
+    float: right;
+    background-color: green;
+    color: white;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+.removeoption {
+    float: right;
+    color: red;
+    margin-right: 5px;
+}
+.correct .question {
+    border: 2px solid green;
+}

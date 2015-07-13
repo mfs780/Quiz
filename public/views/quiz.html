@@ -1,0 +1,105 @@
+<div class="row" ng-if="userType == 'admin' && user">
+    <div class="col-sm-10">
+        <div id="quizCreationTitle" class="row">
+            <!-- Name and Time Limit -->
+            <form class="form-inline">
+                <div style="display: inline-block; font-size:2em;">{{quizObj.name}}</div>
+                <div class="form-group">
+                    <label for="quizTime">Time Limit:</label>
+                    <input ng-model="quizObj.timelimit" type="number" class="form-control" style="width: 70px;" id="quizTime" placeholder="10">
+                    <label for="quizTime">Minutes</label>
+                </div>
+            </form>
+        </div>
+        <div class="row" style="border: 1px solid #B5B5B5;">
+            <div id="quizCreationQuestionList" class="col-sm-2">
+                <!-- Questions List Column -->
+                <div>QUESTIONS</div>
+                <ul>
+                    <li ng-repeat="q in quizObj.questions track by $index" ng-click="setQuestion($index)" ng-class="$index == currentQuestion ? 'active' : 'inactive'">
+                        <div class="square"></div>
+                        <div>{{$index + 1}}</div>
+                    </li>
+                </ul>
+            </div>
+            <div ng-show="currQuestion()" id="quizCreationQuestionContainer" class="col-sm-10">
+                <!-- Question Type Header -->
+                <div id="quizCreationQuestionHeader">
+                    <!-- Type and Point -->
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <label for="questionType">Type: {{currQuestion().type}}</label>
+                        </div>
+                        <div style="float: right;" class="form-group">
+                            <label for="questionPoints">Points: {{currQuestion().points}}</label>
+                        </div>
+                    </form>
+                </div>
+                <div id="quizCreationQuestionBuilder">
+                    <div>Question Prompt:</div>
+                    <textarea ng-model="currQuestion().prompt" style="resize: none;" class="form-control" rows="3" disabled></textarea>
+                    <hr>
+                    <div>Answer:</div>
+
+                    <!-- MCQ -->
+                    <div ng-if="currQuestion().type == 'Multiple Choice'">
+                        <div ng-repeat="response in currQuestion().responses track by $index" style="height: 110px" ng-class="currAnswer().answer == $index ? 'correct' : 'incorrect'">
+                            <div ng-click="currAnswer().answer = $index;" class="question">
+                                <div class="col-sm-1 letter">{{['A', 'B', 'C', 'D', 'E',][$index]}}</div>
+                                <div class="col-sm-11 answer">
+                                    <textarea ng-model="currQuestion().responses[$index]" class="text form-control" rows="3" disabled></textarea>
+                                </div>
+                            </div>
+                            <span ng-if="currAnswer().answer == $index" class="correctoption">Marked As Answer</span>
+                        </div>
+                    </div>
+
+                    <!-- T/F -->
+                    <div ng-if="currQuestion().type == 'True and False'">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <label>Your Answer:</label>
+                                <select ng-model="currAnswer().answer" class="form-control">
+                                    <option>True</option>
+                                    <option>False</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Fill in the Blanks -->
+                    <div ng-if="currQuestion().type == 'Fill in the Blanks'">
+                        <div ng-repeat="blank in blankArray track by $index" style="display: inline-block;">
+                            <span>{{blank.text}}</span>
+                            <span ng-if="blank.box">
+                                <input ng-model="currAnswer().answer[blank.boxIndex]" type="text" class="form-control" style="display: 
+                                inline-block; height: 30px;width: 150px;" placeholder="Enter your Answer">
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Short Answer -->
+                    <div ng-if="currQuestion().type == 'Short Answer'">
+                        <textarea ng-model="currAnswer().answer" class="text form-control" rows="3"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="!currQuestion()" style="height: 400px;" id="quizCreationQuestionContainer" class="col-sm-10">
+                There are No Questions... Add Question.
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-2">
+        <div style="margin: 10px">
+            <button ng-click="submitQuiz()" type="button" class="btn btn-block btn-primary">Submit Quiz</button>
+        </div>
+
+        <div style="margin: 10px">
+            <button ng-click="print()" type="button" class="btn btn-block btn-primary">Export</button>
+        </div>
+        <hr>
+        <div>About this Quiz</div>
+        <textarea ng-model="quizObj.about" style="resize: none;" class="form-control" rows="3" disabled></textarea>
+        <hr>
+    </div>
+</div>
