@@ -79,6 +79,7 @@
                     </div>
 
                     <!-- Fill in the Blanks -->
+                    <div>Insert '_' where you would like to have a fill in the blank spot.</div>
                     <div ng-if="currQuestion().type == 'Fill in the Blanks'">
                         <div ng-repeat="blank in blankArray track by $index" style="display: inline-block;">
                             <span>{{blank.text}}</span>

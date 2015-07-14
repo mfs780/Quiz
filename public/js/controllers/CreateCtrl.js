@@ -189,13 +189,14 @@ angular.module('CreateCtrl', []).controller('CreateController', function($scope,
             console.log('update');
             $scope.quizMain.quiz.update_date = new Date();
             Quiz.update($scope.quizMain).success(function(data) {
-
+                $location.url('/home');
             })
         } else {
             console.log('create');
             $scope.quizMain.quiz.create_date = $scope.quizMain.quiz.update_date = new Date();
             Quiz.create($scope.quizMain).success(function(data) {
                 $scope.quizMain._id = data._id;
+                $location.url('/home');
             });
         }
     };
