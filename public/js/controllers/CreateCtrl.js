@@ -1,5 +1,5 @@
 // public/js/controllers/CreateCtrl.js
-angular.module('CreateCtrl', []).controller('CreateController', function($scope, $routeParams, Quiz) {
+angular.module('CreateCtrl', []).controller('CreateController', function($scope, $routeParams, $location, Quiz) {
 
     if ($scope.user && $scope.userType == 'admin' && $routeParams.id) {
         Quiz.get($routeParams.id).success(function(data) {
@@ -186,15 +186,15 @@ angular.module('CreateCtrl', []).controller('CreateController', function($scope,
 
     $scope.assignQuiz = function() {
         if ($scope.quizMain._id) {
-            console.log('update');
             $scope.quizMain.quiz.update_date = new Date();
             Quiz.update($scope.quizMain).success(function(data) {
+                console.log('update');
                 $location.url('/home');
             })
         } else {
-            console.log('create');
             $scope.quizMain.quiz.create_date = $scope.quizMain.quiz.update_date = new Date();
             Quiz.create($scope.quizMain).success(function(data) {
+                console.log('create');
                 $scope.quizMain._id = data._id;
                 $location.url('/home');
             });
