@@ -53,6 +53,7 @@ module.exports = function(app, passport) {
             quiz.save(function(err) {
                 if (err) throw err;
                 console.log('Quiz update successfully!');
+                res.json(quiz);
             })
         });
     });
