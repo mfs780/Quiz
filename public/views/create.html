@@ -45,10 +45,17 @@
                 </div>
                 <div id="quizCreationQuestionBuilder">
                     <div>
-                        Question Prompt: 
+                        Question Prompt:
                         <span ng-if="currQuestion().type == 'Fill in the Blanks'">
                             Insert '_' where you would like to have a fill in the blank spot.
                         </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="questionImage">Insert Image URL:</label>
+                        <input ng-model="currQuestion().image" type="text" class="form-control" id="questionImage" placeholder="http://...">
+                    </div>
+                    <div ng-if="currQuestion().image">
+                        <img src="{{currQuestion().image}}">
                     </div>
                     <textarea ng-model="currQuestion().prompt" ng-change="getBlankArr()" style="resize: none;" class="form-control" rows="3"></textarea>
                     <hr>

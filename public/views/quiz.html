@@ -37,6 +37,9 @@
                 </div>
                 <div id="quizCreationQuestionBuilder">
                     <div>Question Prompt:</div>
+                    <div ng-if="currQuestion().image">
+                        <img src="{{currQuestion().image}}">
+                    </div>
                     <textarea ng-model="currQuestion().prompt" style="resize: none;" class="form-control" rows="3" disabled></textarea>
                     <hr>
                     <div>Answer:</div>
