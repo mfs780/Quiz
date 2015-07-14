@@ -44,7 +44,12 @@
                     </form>
                 </div>
                 <div id="quizCreationQuestionBuilder">
-                    <div>Question Prompt:</div>
+                    <div>
+                        Question Prompt: 
+                        <span ng-if="currQuestion().type == 'True and False'">
+                            Insert '_' where you would like to have a fill in the blank spot.
+                        </span>
+                    </div>
                     <textarea ng-model="currQuestion().prompt" ng-change="getBlankArr()" style="resize: none;" class="form-control" rows="3"></textarea>
                     <hr>
                     <div>Responses:</div>
@@ -79,7 +84,6 @@
                     </div>
 
                     <!-- Fill in the Blanks -->
-                    <div>Insert '_' where you would like to have a fill in the blank spot.</div>
                     <div ng-if="currQuestion().type == 'Fill in the Blanks'">
                         <div ng-repeat="blank in blankArray track by $index" style="display: inline-block;">
                             <span>{{blank.text}}</span>
