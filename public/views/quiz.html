@@ -15,7 +15,7 @@
             <div id="quizCreationQuestionList" class="col-sm-2">
                 <!-- Questions List Column -->
                 <div>QUESTIONS</div>
-                <ul>
+                <ul style="overflow-y: auto; height: 400px;">
                     <li ng-repeat="q in quizObj.questions track by $index" ng-click="setQuestion($index)" ng-class="$index == currentQuestion ? 'active' : 'inactive'">
                         <div class="square"></div>
                         <div>{{$index + 1}}</div>
